@@ -1,0 +1,39 @@
+name: Bug report
+description: Report a reproducible bug in OpenStep Studio
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for helping improve OpenStep Studio. Please remove private information from screenshots and logs."
+  - type: textarea
+    id: describe
+    attributes:
+      label: What happened?
+      description: Include the expected and actual behavior.
+      placeholder: "When I tried to…"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Open the app\n2. Upload an image\n3. …"
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Additional details
+      description: Device, OS, screenshots (without personal data), or errors.
