@@ -21,6 +21,11 @@ Create clear how-to guides without signup, upload servers, API keys or watermark
 
 ## Try it
 
+**[Live demo](https://zubairshaikh99.github.io/openstep-studio/)** · [View GitHub Actions deployment](https://github.com/Zubairshaikh99/openstep-studio/actions/workflows/deploy.yml)
+
+The deployment workflow has passed. If the page is temporarily unavailable, check the latest GitHub Pages run and allow for DNS/CDN propagation.
+
+
 Open `index.html` through a local web server or the GitHub Pages demo (once Pages has been enabled). No build step or npm dependencies are needed for the single-file edition.
 
 1. Click **Add screenshots** and choose your images.
