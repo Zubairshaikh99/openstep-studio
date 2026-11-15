@@ -1,0 +1,53 @@
+name: Deploy OpenStep Studio to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Publish static application
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Check HTML and inline JavaScript
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const vm = require('node:vm');
+          const h = fs.readFileSync('index.html', 'utf8');
+          if (!h.includes('<!doctype html>') || !h.includes('</html>')) throw new Error('Missing HTML document');
+          const startTag = '\n  <script>\n', endTag = '\n</script>';
+          const start = h.indexOf(startTag), end = h.lastIndexOf(endTag);
+          if (start < 0 || end < start) throw new Error('Inline application script missing');
+          new vm.Script(h.slice(start + startTag.length, end));
+          console.log('HTML structure and application script verified.');
+          NODE
+      - name: Build Pages directory
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+          touch _site/.nojekyll
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Deploy to Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
