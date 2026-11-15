@@ -39,7 +39,7 @@ Open `index.html` through a local web server or the GitHub Pages demo (once Page
 
 ## Deploy on GitHub Pages
 
-In the repository's **Settings → Pages**, select **Deploy from a branch**, choose `main` and `/ (root)`, then save. The hosted app uses no server backend.
+In the repository's **Settings → Pages**, under **Build and deployment → Source**, select **GitHub Actions**. The committed [deployment workflow](.github/workflows/deploy.yml) checks the app and publishes its static `index.html`. After enabling Pages, use **Actions → Deploy OpenStep Studio to GitHub Pages → Run workflow** (or push a subsequent commit). The site will be at `https://zubairshaikh99.github.io/openstep-studio/` once GitHub reports a successful deployment. No server backend is required.
 
 ## Privacy
 
