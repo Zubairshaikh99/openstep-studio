@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="Free, private screenshot-to-tutorial maker. Annotate screenshots and export step-by-step guides directly in your browser.">
+  <title>OpenStep Studio — Screenshot to Tutorial</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f766e'/%3E%3Ctext x='50%25' y='54%25' fill='white' font-size='26' font-family='Arial' text-anchor='middle' dominant-baseline='middle'%3EOS%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+  <style>
+:root{color-scheme:light;--bg:#f5f7fb;--white:#fff;--line:#e6eaf1;--ink:#172335;--muted:#758397;--teal:#0f766e;--teal-dark:#0b615a;--light-teal:#e8f6f3;--orange:#f97316;--shadow:0 10px 35px rgba(20,37,56,.055);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Arial,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5}button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}a{color:var(--teal)}a:hover{text-decoration:underline}.hidden{display:none!important}.skip{position:absolute;left:-999px;top:0;background:#fff;z-index:100;padding:12px}.skip:focus{left:0}.app-shell{min-height:100vh;display:flex;flex-direction:column}.app-header{background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:13px 27px;gap:20px;min-height:75px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}.brand-mark{background:#0f766e;color:#fff;border-radius:12px;width:43px;height:43px;display:grid;place-items:center;font-size:16px;font-weight:850;letter-spacing:-1px;box-shadow:0 5px 14px rgba(15,118,110,.2)}.brand-text{display:flex;flex-direction:column;line-height:1.1;gap:4px;font-size:17px;letter-spacing:-.7px}.brand-text small{font-size:9px;color:var(--teal);font-weight:850;letter-spacing:2px}.header-pill{font-size:12px;border-radius:99px;background:#f1faf7;color:#397066;padding:7px 12px;margin-left:14px;white-space:nowrap}.privacy-dot,.intro-dot{display:inline-block;background:#36c69a;width:7px;height:7px;border-radius:50%;margin-right:7px}.header-actions{margin-left:auto;display:flex;align-items:center;gap:8px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:9px;font-weight:700;min-height:40px;padding:10px 15px;border:1px solid transparent;background:transparent;white-space:nowrap;transition:background .15s,transform .15s}.btn:active{transform:scale(.985)}.btn-primary{background:var(--teal);color:white;box-shadow:0 4px 12px rgba(15,118,110,.11)}.btn-primary:hover{background:var(--teal-dark)}.btn-ghost{border:1px solid var(--line);color:var(--ink);background:white}.btn-ghost:hover,.btn-outline:hover{background:#f8fafb}.btn-outline{background:#fff;color:var(--ink);border:1px solid #dce4ea}.btn-subtle{background:#f4f7fa;color:#3e596a;border:1px solid #edf1f5}.btn-add{border:1px dashed #85c9bc;color:var(--teal);background:#f4fcfa;width:100%;margin-top:12px}.btn-large{font-size:15px;padding:14px 24px}.intro-bar{background:#f9fcfa;border-bottom:1px solid var(--line);font-size:11px;color:#628078;padding:8px 27px;display:flex;align-items:center;justify-content:center;gap:10px}.intro-sep{color:#a7bdba}.main-layout{width:100%;display:grid;grid-template-columns:272px minmax(300px,1fr) 262px;flex:1;align-items:stretch;gap:22px;padding:22px;max-width:1800px;margin:auto}.steps-panel,.export-panel{border:1px solid var(--line);background:white;border-radius:14px;box-shadow:var(--shadow);padding:20px;align-self:start;min-height:530px}.panel-heading{display:flex;justify-content:space-between;align-items:start}.panel-heading h2{font-size:16px;margin:0 0 3px;letter-spacing:-.4px}.panel-heading p{font-size:12px;color:var(--muted);margin:0}.icon-btn{background:white;border:1px solid var(--line);border-radius:8px;width:32px;height:32px;display:grid;place-items:center;font-size:22px;color:#475569}.project-fields{display:flex;flex-direction:column;gap:8px;margin:22px 0}.project-fields label,.editor-fields label{font-weight:750;font-size:12px;color:#465468}.optional{color:#94a2b4;font-weight:500}.project-fields input,.project-fields textarea,.editor-fields input,.editor-fields textarea{background:white;border:1px solid #dfe6eb;border-radius:8px;color:var(--ink);min-height:40px;outline:0;width:100%;padding:10px 12px;font-size:13px;resize:vertical}.project-fields :is(input,textarea):focus,.editor-fields :is(input,textarea):focus{border-color:#3d9d91;box-shadow:0 0 0 3px #def7f1}.project-fields textarea{min-height:66px}.steps-label{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:16px}.steps-label strong{font-size:12px}.step-count{font-size:11px;background:#edf3f7;color:#658095;border-radius:30px;padding:2px 9px}.step-list{display:flex;flex-direction:column;gap:8px;max-height:420px;overflow:auto;padding-top:12px}.step-empty{font-size:12px;text-align:center;color:#8a9bab;padding:24px 5px 14px}.step-card{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px;align-items:center;cursor:pointer;text-align:left;width:100%;color:var(--ink)}.step-card.active{border-color:#32a496;background:#f0faf8}.step-thumb{width:54px;height:44px;flex-shrink:0;object-fit:cover;border-radius:5px;background:#dae4ea}.step-info{flex:1;min-width:0}.step-info strong{display:block;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.step-info small{color:var(--muted)}.step-move{display:flex;gap:2px}.step-move button{font-size:14px;background:transparent;border:0;color:#74869b;padding:3px}.step-move button:hover{color:var(--teal)}.step-delete{background:transparent;border:0;color:#9ca8b7;font-size:16px;padding:0 3px}.step-delete:hover{color:#dc2626}.side-bottom{display:flex;align-items:flex-start;gap:10px;margin-top:22px;padding:13px 10px;border-radius:9px;background:#f2faf8;color:#4b726c}.shield-icon{font-size:24px}.side-bottom strong{display:block;font-size:11px}.side-bottom small{font-size:11px;display:block;line-height:1.5;margin-top:4px}.editor-area{min-width:0}.section-top{display:flex;justify-content:space-between;align-items:center;margin:0 0 17px}.eyebrow{font-size:10px;letter-spacing:2px;font-weight:800;color:var(--teal)}h1{font-size:20px;margin:1px 0 0;letter-spacing:-.6px}.save-status{font-size:11px;color:#78879a}.empty-state{min-height:590px;border:1px solid var(--line);border-radius:14px;background:white;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 30px;box-shadow:var(--shadow)}.empty-state h2{font-size:22px;letter-spacing:-.7px;margin:28px 0 8px}.empty-state p{max-width:400px;color:#718096;margin:0 0 22px}.empty-decoration{width:180px;height:140px;border-radius:50%;background:#eef8f5;display:grid;place-items:center;position:relative}.empty-decoration:before,.empty-decoration:after{position:absolute;content:"";border-radius:50%;background:#cff2e7}.empty-decoration:before{height:18px;width:18px;top:10px;right:8px}.empty-decoration:after{height:10px;width:10px;bottom:14px;left:12px}.mock-card{position:relative;height:90px;width:130px;border:7px solid white;border-radius:11px;box-shadow:0 10px 24px #bddad4;background:linear-gradient(145deg,#cee3f0 35%,#8ac6bc 36%);transform:rotate(-7deg)}.mock-image{font-size:50px;color:#fff;position:absolute;left:23px;top:2px;opacity:.9}.mock-arrow{position:absolute;right:0;top:2px;font-size:31px;color:#f97316;transform:rotate(24deg)}.mock-bubble{position:absolute;background:#f97316;color:#fff;border:3px solid #fff;border-radius:50%;height:31px;width:31px;line-height:25px;font-weight:900;right:10px;bottom:-13px}.supported-types{font-size:11px;color:#95a3b3;margin-top:12px}.feature-chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:36px}.feature-chips span{padding:7px 10px;border-radius:30px;font-size:11px;background:#f4f7fa;color:#64748b}.editor{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px;box-shadow:var(--shadow)}.editor-fields{display:grid;gap:9px}.toolbar-wrap{padding-top:20px}.toolbar-heading{display:flex;justify-content:space-between;gap:10px;margin-bottom:9px}.toolbar-heading strong{font-size:12px}.toolbar-heading small{font-size:11px;color:var(--muted)}.toolbar{background:#f8fafc;border:1px solid var(--line);border-radius:10px;display:flex;align-items:center;gap:5px;padding:6px;flex-wrap:wrap}.tool{border:1px solid transparent;background:transparent;border-radius:7px;color:#64748b;display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 9px;font-size:10px;font-weight:650;min-width:56px}.tool.active{color:var(--teal);border-color:#b9e5dc;background:#eaf8f4}.tool-symbol{font-size:21px;line-height:1.1}.toolbar-divider{width:1px;height:30px;background:#dce4ea;margin:0 5px}.color-control,.size-control{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:750;color:#58677d;padding:5px}.color-control input{width:28px;height:28px;padding:0;border:0;background:transparent}.size-control input{width:70px;accent-color:var(--teal)}.canvas-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#7c8da1;font-size:11px;margin:15px 0 8px;flex-wrap:wrap}.canvas-toolbar>div{display:flex;gap:4px;flex-wrap:wrap}.tiny-btn{background:transparent;color:#66758a;border:0;padding:5px 7px;border-radius:6px;font-size:11px}.tiny-btn:hover{background:#edf3f8}.tiny-btn.danger{color:#b85d54}.canvas-background{background:repeating-conic-gradient(#f0f3f6 0 25%,#e7ebef 0 50%) 50% / 18px 18px;border:1px solid #dde4e9;border-radius:9px;display:grid;place-items:center;padding:20px;min-height:275px;max-height:550px;overflow:auto;touch-action:pan-y}.canvas-background canvas{max-width:100%;max-height:500px;width:auto;height:auto;display:block;cursor:crosshair;touch-action:none;box-shadow:0 8px 22px #16212d25;background:#fff}.canvas-hint{font-size:11px;color:#8190a2;text-align:center;margin:9px 0}.editor-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:15px;margin-top:17px;font-size:12px;color:#778699}.export-panel{display:flex;flex-direction:column;gap:9px}.export-preview{padding:25px 12px 20px;margin-top:12px;border-radius:10px;border:1px dashed #cfe3df;text-align:center;background:#f7fcfa}.document-icon{display:grid;place-items:center;color:var(--teal);font-size:34px;margin-bottom:6px}.export-preview strong{display:block;font-size:13px}.export-preview p{margin:5px auto 0;max-width:180px;font-size:11px;color:#8393a2}.export-panel>.btn{width:100%;justify-content:center;font-size:12px}.export-panel h3{font-size:12px;margin:0 0 5px}.export-divider{border-bottom:1px solid var(--line);margin:10px 0}.export-tip{font-size:11px;color:#8494a3;line-height:1.55;margin:14px 1px}.app-footer{display:flex;justify-content:space-between;align-items:center;gap:14px;border-top:1px solid var(--line);padding:14px 27px;color:#7d899a;font-size:11px;background:#fff}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#163b37;color:#fff;padding:12px 19px;border-radius:10px;z-index:100;box-shadow:0 10px 30px #0003;max-width:92vw}.toast.error{background:#a12f38}.preview-dialog{width:min(850px,96vw);height:min(88vh,900px);border:1px solid #dfe5eb;border-radius:14px;box-shadow:0 25px 90px #1319254d;padding:0;color:var(--ink)}.preview-dialog::backdrop{background:#0b1321ac}.dialog-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:14px 21px}.dialog-head h2{font-size:17px;margin:0}.guide-preview{overflow:auto;padding:28px;max-height:calc(88vh - 140px)}.guide-preview h1{font-size:25px}.guide-preview .guide-step{margin:28px 0}.guide-preview img{max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:8px}.guide-preview h2{margin:13px 0 7px;font-size:19px}.guide-preview p{white-space:pre-wrap;color:#475569}.dialog-actions{border-top:1px solid var(--line);padding:12px 20px;display:flex;justify-content:flex-end}
+@media(max-width:1200px){.main-layout{grid-template-columns:230px minmax(300px,1fr);gap:15px;padding:15px}.export-panel{grid-column:2;min-height:auto}.export-preview{display:none}.export-panel .panel-heading{margin-bottom:5px}.export-panel>.btn{max-width:100%}.header-pill{display:none}}
+@media(max-width:760px){.app-header{padding:10px 12px;gap:8px;flex-wrap:wrap}.brand-mark{width:35px;height:35px}.brand-text{font-size:15px}.header-actions{gap:5px}.header-actions .compact{font-size:11px;padding:8px;min-height:36px}.header-actions .btn-primary{font-size:11px;padding:8px;min-height:36px}.intro-bar{padding:8px 10px;gap:6px;font-size:10px}.desktop-only{display:none}.main-layout{display:flex;flex-direction:column;padding:10px;gap:12px}.steps-panel,.export-panel{min-height:0;padding:15px}.steps-panel .panel-heading{margin-bottom:2px}.project-fields{margin:12px 0}.steps-panel .side-bottom{display:none}.step-list{flex-direction:row;overflow:auto;max-height:100%;padding-bottom:5px}.step-card{min-width:175px;max-width:210px}.step-thumb{width:44px;height:40px}.step-info{flex:1}.editor-area{order:1}.steps-panel{order:0}.export-panel{order:2}.section-top{margin:5px 3px 10px}.empty-state{min-height:370px;padding:20px}.empty-state h2{font-size:20px}.empty-decoration{height:100px;width:135px}.mock-card{transform:scale(.75) rotate(-7deg)}.feature-chips{margin-top:18px}.editor{padding:12px}.editor-fields textarea{min-height:65px}.toolbar{gap:3px}.tool{min-width:51px;padding:6px}.toolbar-heading small{display:none}.size-control input{width:90px}.canvas-background{padding:10px;min-height:180px;max-height:410px}.canvas-background canvas{max-height:380px}.editor-bottom .btn{font-size:12px;padding:7px 9px}.export-panel{gap:8px}.app-footer{flex-direction:column;text-align:center;padding:14px 10px}}
+@media(max-width:375px){.header-actions{width:100%;justify-content:space-between}.header-actions .btn-primary{flex:1}.tool{min-width:47px;padding:5px}.size-control{width:100%}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to editor</a>
+  <div class="app-shell">
+    <header class="app-header">
+      <a class="brand" href="./" aria-label="OpenStep Studio home">
+        <span class="brand-mark" aria-hidden="true">OS</span>
+        <span class="brand-text"><strong>OpenStep</strong><small>STUDIO</small></span>
+      </a>
+      <span class="header-pill"><span class="privacy-dot"></span> Runs on your device</span>
+      <div class="header-actions">
+        <button class="btn btn-ghost compact" id="newProject" type="button" title="Start a new tutorial">New</button>
+        <button class="btn btn-ghost compact" id="importBackup" type="button" title="Open a saved OpenStep project">Open project</button>
+        <button class="btn btn-primary" id="exportPdfTop" type="button" title="Print or save the guide as a PDF">Export PDF <span aria-hidden="true">↗</span></button>
+      </div>
+    </header>
+
+    <div class="intro-bar"><span class="intro-dot"></span><span>Free and open source</span><span class="intro-sep">•</span><span>No sign-in, uploads, or watermark</span><span class="intro-sep desktop-only">•</span><span class="desktop-only">Your screenshots stay in your browser</span></div>
+
+    <main class="main-layout" id="main">
+      <aside class="steps-panel" aria-label="Tutorial steps">
+        <div class="panel-heading">
+          <div><h2>My tutorial</h2><p>Build your guide step by step.</p></div>
+          <button id="addImagesIcon" class="icon-btn" aria-label="Add screenshots" title="Add screenshots" type="button">＋</button>
+        </div>
+        <div class="project-fields">
+          <label for="guideTitle">Guide title</label>
+          <input id="guideTitle" type="text" maxlength="110" value="My step-by-step guide" placeholder="My step-by-step guide" autocomplete="off">
+          <label for="guideSubtitle">Short introduction <span class="optional">(optional)</span></label>
+          <textarea id="guideSubtitle" rows="2" maxlength="400" placeholder="What will readers learn?"></textarea>
+        </div>
+        <div class="steps-label"><strong>Steps</strong><span id="stepCount" class="step-count">0</span></div>
+        <div id="stepList" class="step-list" role="list" aria-live="polite"></div>
+        <button class="btn btn-add" id="addImages" type="button"><span aria-hidden="true">＋</span> Add screenshots</button>
+        <div class="side-bottom"><span class="shield-icon">◈</span><span><strong>Private by design</strong><small>Everything is processed in your browser. Export backups to keep your work safe.</small></span></div>
+      </aside>
+
+      <section class="editor-area" aria-labelledby="workspaceTitle">
+        <div class="section-top">
+          <div><div class="eyebrow">WORKSPACE</div><h1 id="workspaceTitle">Screenshot editor</h1></div>
+          <div id="saveStatus" class="save-status" role="status" aria-live="polite">No project saved yet</div>
+        </div>
+
+        <div id="emptyState" class="empty-state">
+          <div class="empty-decoration" aria-hidden="true"><div class="mock-card"><span class="mock-image">▧</span><span class="mock-arrow">➜</span><span class="mock-bubble">1</span></div></div>
+          <h2>Turn screenshots into clear tutorials</h2>
+          <p>Add your screenshots, highlight what matters, and export a beautiful step-by-step guide. No account required.</p>
+          <button class="btn btn-primary btn-large" id="uploadFirst" type="button">＋ Upload screenshots</button>
+          <div class="supported-types">PNG, JPG, WebP · Up to 15 MB per image</div>
+          <div class="feature-chips"><span>① Numbered steps</span><span>↗ Arrows & highlights</span><span>↓ PDF & HTML</span></div>
+        </div>
+
+        <div id="editor" class="editor hidden">
+          <div class="editor-fields">
+            <div class="field-full"><label for="stepTitle">Step title</label><input id="stepTitle" type="text" maxlength="120" placeholder="Describe this step"></div>
+            <div class="field-full"><label for="stepDescription">Instructions</label><textarea id="stepDescription" rows="2" maxlength="2000" placeholder="Explain what the reader should do..."></textarea></div>
+          </div>
+          <div class="toolbar-wrap">
+            <div class="toolbar-heading"><strong>Annotate screenshot</strong><small>Choose a tool, then draw on the image</small></div>
+            <div class="toolbar" role="toolbar" aria-label="Screenshot annotation tools">
+              <button type="button" class="tool active" data-tool="number" aria-pressed="true"><span class="tool-symbol">①</span><span>Number</span></button>
+              <button type="button" class="tool" data-tool="arrow" aria-pressed="false"><span class="tool-symbol">↗</span><span>Arrow</span></button>
+              <button type="button" class="tool" data-tool="rectangle" aria-pressed="false"><span class="tool-symbol">▢</span><span>Box</span></button>
+              <button type="button" class="tool" data-tool="circle" aria-pressed="false"><span class="tool-symbol">◯</span><span>Circle</span></button>
+              <button type="button" class="tool" data-tool="highlight" aria-pressed="false"><span class="tool-symbol">▰</span><span>Highlight</span></button>
+              <span class="toolbar-divider" aria-hidden="true"></span>
+              <label class="color-control" title="Annotation color"><span>Color</span><input id="annotationColor" type="color" value="#f97316" aria-label="Annotation color"></label>
+              <label class="size-control" title="Stroke thickness"><span>Size</span><input id="annotationSize" type="range" min="3" max="18" value="7" aria-label="Annotation stroke size"></label>
+            </div>
+          </div>
+          <div class="canvas-toolbar"><span id="imageDimensions">Screenshot preview</span><div><button id="undo" class="tiny-btn" type="button" title="Undo (Ctrl+Z)">↶ Undo</button><button id="redo" class="tiny-btn" type="button" title="Redo (Ctrl+Y)">↷ Redo</button><button id="clearAnnotations" class="tiny-btn danger" type="button">Clear marks</button></div></div>
+          <div class="canvas-background" id="canvasStage"><canvas id="imageCanvas" aria-label="Editable screenshot; use your chosen tool to annotate it"></canvas></div>
+          <div class="canvas-hint" id="canvasHint">Tap the screenshot to place a numbered marker. Numbered markers are assigned in order.</div>
+          <div class="editor-bottom"><button class="btn btn-ghost" id="previousStep" type="button">← Previous</button><span id="stepPosition">Step 1 of 1</span><button class="btn btn-ghost" id="nextStep" type="button">Next →</button></div>
+        </div>
+      </section>
+
+      <aside class="export-panel" aria-label="Export options">
+        <div class="panel-heading"><div><h2>Export & backup</h2><p>Make your guide shareable.</p></div></div>
+        <div class="export-preview"><div class="document-icon">▤</div><strong>Ready to share</strong><p>Your screenshots, instructions and annotations, all in one guide.</p></div>
+        <button id="previewGuide" class="btn btn-outline" type="button">◫ Preview guide</button>
+        <button id="exportPdf" class="btn btn-primary" type="button">↓ Print / Save as PDF</button>
+        <button id="exportHtml" class="btn btn-outline" type="button">↓ Download HTML guide</button>
+        <button id="exportPng" class="btn btn-outline" type="button">↓ Download current PNG</button>
+        <div class="export-divider"></div>
+        <h3>Your project</h3>
+        <button id="downloadProject" class="btn btn-subtle" type="button">↓ Download project backup</button>
+        <button id="restoreProject" class="btn btn-subtle" type="button">↑ Restore project backup</button>
+        <p class="export-tip">PDF uses your browser's print dialog. Choose “Save as PDF” as the destination. Your guide can also be exported as a standalone HTML page.</p>
+      </aside>
+    </main>
+
+    <footer class="app-footer"><span>OpenStep Studio · Open-source tutorial maker</span><span>Created by <a href="https://github.com/Zubairshaikh99" target="_blank" rel="noopener noreferrer">Zubair Shaikh</a> · <a href="https://www.zubware.com/" target="_blank" rel="noopener noreferrer">Zubware</a></span></footer>
+  </div>
+  <input type="file" id="imageInput" accept="image/png,image/jpeg,image/webp" multiple hidden>
+  <input type="file" id="projectInput" accept=".json,application/json" hidden>
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <dialog id="guideDialog" class="preview-dialog" aria-label="Tutorial preview"><div class="dialog-head"><h2>Guide preview</h2><button id="closePreview" class="icon-btn" aria-label="Close preview">×</button></div><div id="guidePreviewBody" class="guide-preview"></div><div class="dialog-actions"><button id="previewPdf" class="btn btn-primary">Print / Save as PDF</button></div></dialog>
+  <script>
+/** Shared, dependency-free helpers. */
+function escapeHtml(value = '') {
+  return String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[ch]));
+}
+function safeFilename(value, fallback = 'openstep-guide') {
+  const name = String(value || '').normalize('NFKD').replace(/[^a-zA-Z0-9 _-]/g,'').trim().replace(/\s+/g,'-').slice(0,70);
+  return name || fallback;
+}
+function clamp(n, min = 0, max = 1) { return Math.min(max, Math.max(min, Number(n) || 0)); }
+function uid() { return (typeof crypto !== 'undefined' && crypto.randomUUID) ? crypto.randomUUID() : `step-${Date.now()}-${Math.random().toString(36).slice(2)}`; }
+const IMAGE_DATA_RE = /^data:image\/(png|jpeg|webp);base64,[a-zA-Z0-9+/=\s]+$/;
+const VALID_TOOLS = new Set(['number','arrow','rectangle','circle','highlight']);
+function normalizeProject(data) {
+  if (!data || typeof data !== 'object' || !Array.isArray(data.steps)) throw new Error('Invalid OpenStep project file.');
+  if (data.steps.length > 60) throw new Error('Project contains too many steps (maximum 60).');
+  const text = (s, max) => String(s ?? '').slice(0,max);
+  let bytes = 0;
+  const steps = data.steps.map((raw, index) => {
+    if (!raw || !IMAGE_DATA_RE.test(String(raw.src || ''))) throw new Error(`Step ${index+1} has an invalid screenshot.`);
+    bytes += raw.src.length;
+    if (bytes > 100_000_000) throw new Error('Project is too large to import.');
+    const annotations = Array.isArray(raw.annotations) ? raw.annotations.slice(0,1000).filter(a=>a && VALID_TOOLS.has(a.type)).map(a=>({
+      type:a.type, x:clamp(a.x), y:clamp(a.y), x2:clamp(a.x2), y2:clamp(a.y2), color:/^#[0-9a-fA-F]{6}$/.test(a.color)?a.color:'#f97316',
+      size:clamp(a.size,2,22), label:Math.min(999,Math.max(1,Math.floor(Number(a.label)||1)))
+    })) : [];
+    return {id:uid(),title:text(raw.title || `Step ${index+1}`,120),description:text(raw.description,2000),src:raw.src,annotations};
+  });
+  return {version:1,title:text(data.title || 'My step-by-step guide',110),subtitle:text(data.subtitle,400),steps};
+}
+function createEmptyProject() {return {version:1,title:'My step-by-step guide',subtitle:'',steps:[]};}
+const DB_NAME = 'openstep-studio-db';
+const DB_VERSION = 1;
+const STORE = 'projects';
+function connect(){
+  return new Promise((resolve,reject)=>{
+    if(!('indexedDB' in window)) return reject(new Error('IndexedDB is unavailable in this browser.'));
+    const request=indexedDB.open(DB_NAME, DB_VERSION);
+    request.onupgradeneeded=()=>{if(!request.result.objectStoreNames.contains(STORE)) request.result.createObjectStore(STORE);};
+    request.onsuccess=()=>resolve(request.result);
+    request.onerror=()=>reject(request.error || new Error('Could not open local project database.'));
+  });
+}
+async function transaction(mode,operation){
+  const db=await connect();
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction(STORE,mode);const req=operation(tx.objectStore(STORE));
+    let value;
+    req.onsuccess=()=>{value=req.result;};
+    req.onerror=()=>reject(req.error || new Error('Local storage request failed.'));
+    tx.oncomplete=()=>{db.close();resolve(value);};
+    tx.onerror=()=>{db.close();reject(tx.error || new Error('Local project storage failed.'));};
+    tx.onabort=()=>{db.close();reject(tx.error || new Error('Local project save was interrupted.'));};
+  });
+}
+function loadDraft(){return transaction('readonly',store=>store.get('draft'));}
+function saveDraft(project){return transaction('readwrite',store=>store.put(project,'draft'));}
+function clearDraft(){return transaction('readwrite',store=>store.delete('draft'));}
+const images = new Map();
+function loadImage(src){
+  if(images.has(src)) return images.get(src);
+  const p=new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>resolve(img);img.onerror=()=>reject(new Error('Screenshot could not be loaded.'));img.src=src;});
+  images.set(src,p);if(images.size>15)images.delete(images.keys().next().value);
+  return p;
+}
+function line(ctx,x1,y1,x2,y2){ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();}
+function drawAnnotation(ctx,a,w,h){
+  if(!a)return;
+  const x=clamp(a.x)*w,y=clamp(a.y)*h,x2=clamp(a.x2)*w,y2=clamp(a.y2)*h;
+  const size=Math.max(2,(Number(a.size)||7)*w/1000);
+  ctx.save();ctx.strokeStyle=a.color||'#f97316';ctx.fillStyle=a.color||'#f97316';ctx.lineWidth=size;ctx.lineJoin='round';ctx.lineCap='round';
+  if(a.type==='number'){
+    const radius=Math.max(13,23*w/1000);ctx.beginPath();ctx.arc(x,y,radius,0,Math.PI*2);ctx.fill();
+    ctx.lineWidth=Math.max(2,3*w/1000);ctx.strokeStyle='#fff';ctx.stroke();ctx.fillStyle='#fff';ctx.font=`800 ${Math.round(radius*1.15)}px system-ui, Arial`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(String(a.label||1),x,y+1);
+  }else if(a.type==='arrow'){
+    line(ctx,x,y,x2,y2);const angle=Math.atan2(y2-y,x2-x),head=Math.max(12,size*3.2);
+    ctx.beginPath();ctx.moveTo(x2,y2);ctx.lineTo(x2-head*Math.cos(angle-.48),y2-head*Math.sin(angle-.48));ctx.lineTo(x2-head*Math.cos(angle+.48),y2-head*Math.sin(angle+.48));ctx.closePath();ctx.fill();
+  }else if(a.type==='rectangle'||a.type==='highlight'){
+    if(a.type==='highlight'){ctx.globalAlpha=.25;ctx.fillRect(Math.min(x,x2),Math.min(y,y2),Math.abs(x2-x),Math.abs(y2-y));}
+    else ctx.strokeRect(Math.min(x,x2),Math.min(y,y2),Math.abs(x2-x),Math.abs(y2-y));
+  }else if(a.type==='circle'){
+    const centerX=(x+x2)/2,centerY=(y+y2)/2;ctx.beginPath();ctx.ellipse(centerX,centerY,Math.max(1,Math.abs(x2-x)/2),Math.max(1,Math.abs(y2-y)/2),0,0,Math.PI*2);ctx.stroke();
+  }
+  ctx.restore();
+}
+async function renderToCanvas(step, canvas, extra=null){
+  const img=await loadImage(step.src);
+  if(canvas.width!==img.naturalWidth) canvas.width=img.naturalWidth;
+  if(canvas.height!==img.naturalHeight) canvas.height=img.naturalHeight;
+  const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0);
+  for(const a of step.annotations)drawAnnotation(ctx,a,canvas.width,canvas.height);
+  if(extra)drawAnnotation(ctx,extra,canvas.width,canvas.height);
+  return canvas;
+}
+async function annotatedPng(step){const canvas=document.createElement('canvas');await renderToCanvas(step,canvas);return canvas.toDataURL('image/png');}
+async function createGuideMarkup(project){
+  const chunks=[];
+  for(let i=0;i<project.steps.length;i++){
+    const s=project.steps[i], image=await annotatedPng(s);
+    chunks.push(`<section class="guide-step"><div class="step-label">STEP ${i+1}</div><h2>${escapeHtml(s.title||`Step ${i+1}`)}</h2><p>${escapeHtml(s.description||'')}</p><img src="${image}" alt="Annotated screenshot for step ${i+1}" loading="eager"></section>`);
+  }
+  return `<div class="guide"><div class="guide-cover"><div class="guide-kicker">OPENSTEP GUIDE</div><h1>${escapeHtml(project.title)}</h1>${project.subtitle?`<p>${escapeHtml(project.subtitle)}</p>`:''}<div class="guide-meta">${project.steps.length} step${project.steps.length===1?'':'s'}</div></div>${chunks.join('')}<footer class="guide-credit">Created with OpenStep Studio · <a href="https://github.com/Zubairshaikh99/openstep-studio">Open-source software</a></footer></div>`;
+}
+function fullGuideHtml(body,title, autoPrint=false){
+  const css=`@page{size:A4;margin:16mm}*{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;margin:0;color:#1b2839;background:#f3f5f7;line-height:1.55}main{background:#fff;max-width:790px;margin:20px auto;padding:36px 40px;box-shadow:0 5px 22px #0001}.guide-kicker{letter-spacing:2px;font-size:10px;font-weight:800;color:#0f766e}.guide-cover{padding-bottom:20px;border-bottom:1px solid #dae2e8;margin-bottom:30px}.guide-cover h1{font-size:32px;line-height:1.2;margin:10px 0}.guide-cover p{color:#536476;white-space:pre-wrap}.guide-meta{font-size:12px;color:#738496}.step-label{color:#0f766e;font-weight:800;font-size:11px;letter-spacing:1.5px}.guide-step{margin:26px 0 35px;break-inside:avoid-page;page-break-inside:avoid}.guide-step h2{font-size:21px;margin:6px 0}.guide-step p{white-space:pre-wrap;color:#465569;margin:0 0 14px}.guide-step img{max-width:100%;height:auto;display:block;border:1px solid #e6eaee;border-radius:7px}.guide-credit{font-size:11px;color:#8190a0;border-top:1px solid #e4e8ed;padding-top:15px}.guide-credit a{color:#0f766e}@media print{body{background:#fff}main{max-width:none;box-shadow:none;padding:0;margin:0}.guide-step{margin:25px 0;break-inside:avoid-page;page-break-inside:avoid}.guide-step img{max-height:220mm;object-fit:contain;object-position:left top}}@media(max-width:650px){main{margin:0;padding:20px}.guide-cover h1{font-size:26px}}`;
+  const script=autoPrint?`<script>window.addEventListener('load',()=>{const images=[...document.images];Promise.all(images.map(i=>i.complete?Promise.resolve():new Promise(r=>{i.onload=r;i.onerror=r}))).then(()=>setTimeout(()=>window.print(),500));});<\/script>`:'';
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(title)} — OpenStep Guide</title><style>${css}</style></head><body><main>${body}</main>${script}</body></html>`;
+}
+function downloadText(content,filename,mime='text/plain'){const blob=new Blob([content],{type:mime});downloadBlob(blob,filename);}
+function downloadBlob(blob,filename){const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
+function downloadDataUrl(dataUrl,filename){const a=document.createElement('a');a.href=dataUrl;a.download=filename;document.body.append(a);a.click();a.remove();}
+function guideBaseFilename(project){return safeFilename(project.title,'openstep-guide');}
+
+const $=id=>document.getElementById(id);
+const projectInput=$('projectInput'),imageInput=$('imageInput'),canvas=$('imageCanvas');
+let project=createEmptyProject(), selectedId=null,tool='number',draft=null,undoStacks=new Map(),redoStacks=new Map();
+let renderSerial=0,saveTimer=null,noticeTimer=null,busy=false;
+const selected=()=>project.steps.find(x=>x.id===selectedId)||null;
+const index=()=>project.steps.findIndex(x=>x.id===selectedId);
+const say=(message,isError=false)=>{const t=$('toast');t.textContent=message;t.classList.remove('hidden');t.classList.toggle('error',isError);clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>t.classList.add('hidden'),4000);};
+function setBusy(value){busy=value;for(const id of ['exportPdf','exportPdfTop','exportHtml','exportPng','previewGuide','downloadProject'])$(id).disabled=value;}
+function updateSaveStatus(message){$('saveStatus').textContent=message;}
+function dirty(){updateSaveStatus('Saving locally…');clearTimeout(saveTimer);saveTimer=setTimeout(async()=>{try{await saveDraft(project);updateSaveStatus('✓ Saved on this device');}catch(e){updateSaveStatus('⚠ Local save unavailable');say('Local save failed. Please download a project backup.',true);console.error(e);}},800);}
+function labelForTool(){return {number:'Tap the screenshot to place a numbered marker.',arrow:'Drag from a starting point to draw an arrow.',rectangle:'Drag on the screenshot to draw a box.',circle:'Drag to draw an oval or circle.',highlight:'Drag over an area to highlight it.'}[tool];}
+function getStepHistory(){if(!undoStacks.has(selectedId))undoStacks.set(selectedId,[]);if(!redoStacks.has(selectedId))redoStacks.set(selectedId,[]);return [undoStacks.get(selectedId),redoStacks.get(selectedId)];}
+function checkpoint(){const step=selected();if(!step)return;const [undo,redo]=getStepHistory();undo.push(JSON.stringify(step.annotations));if(undo.length>80)undo.shift();redo.length=0;}
+function historyUndo(redo=false){const step=selected();if(!step)return;const [undos,redos]=getStepHistory();const from=redo?redos:undos,to=redo?undos:redos;if(!from.length)return;to.push(JSON.stringify(step.annotations));step.annotations=JSON.parse(from.pop());refreshCanvas();refreshHistory();dirty();}
+function refreshHistory(){const [undo,redo]=selected()?getStepHistory():[[],[]];$('undo').disabled=undo.length===0;$('redo').disabled=redo.length===0;$('clearAnnotations').disabled=!selected()||selected().annotations.length===0;}
+function textChange(){const step=selected();if(!step)return;step.title=$('stepTitle').value;step.description=$('stepDescription').value;renderSteps();dirty();}
+function renderSteps(){const list=$('stepList');list.replaceChildren();$('stepCount').textContent=String(project.steps.length);
+  if(!project.steps.length){const div=document.createElement('div');div.className='step-empty';div.textContent='No screenshots yet. Add a few to get started.';list.append(div);return;}
+  project.steps.forEach((step,i)=>{
+    const card=document.createElement('div');card.className='step-card'+(step.id===selectedId?' active':'');card.setAttribute('role','listitem');
+    const open=document.createElement('button');open.className='step-card';open.style.border='0';open.style.background='transparent';open.style.padding='0';open.style.minWidth='0';open.style.flex='1';open.setAttribute('aria-label',`Open ${step.title}`);
+    const thumb=document.createElement('img');thumb.className='step-thumb';thumb.src=step.src;thumb.alt='';
+    const info=document.createElement('span');info.className='step-info';const title=document.createElement('strong');title.textContent=step.title||`Step ${i+1}`;const small=document.createElement('small');small.textContent=`Step ${i+1} · ${step.annotations.length} marks`;info.append(title,small);open.append(thumb,info);open.addEventListener('click',()=>selectStep(step.id));
+    const actions=document.createElement('span');actions.className='step-move';
+    for(const [delta,label,symbol] of [[-1,'Move up','↑'],[1,'Move down','↓']]){const btn=document.createElement('button');btn.type='button';btn.textContent=symbol;btn.title=label;btn.setAttribute('aria-label',`${label} step ${i+1}`);btn.disabled=!(i+delta>=0&&i+delta<project.steps.length);btn.addEventListener('click',()=>moveStep(i,delta));actions.append(btn);}
+    const del=document.createElement('button');del.className='step-delete';del.type='button';del.title='Remove step';del.setAttribute('aria-label',`Remove step ${i+1}`);del.textContent='×';del.addEventListener('click',()=>removeStep(step.id));card.append(open,actions,del);list.append(card);
+  });
+}
+function renderEditor(){const s=selected();$('emptyState').classList.toggle('hidden',!!s);$('editor').classList.toggle('hidden',!s);$('stepTitle').value=s?.title||'';$('stepDescription').value=s?.description||'';
+  if(s){$('stepPosition').textContent=`Step ${index()+1} of ${project.steps.length}`;$('previousStep').disabled=index()===0;$('nextStep').disabled=index()===project.steps.length-1;refreshCanvas();}refreshHistory();
+}
+function selectStep(id){if(!project.steps.some(s=>s.id===id))return;selectedId=id;draft=null;renderSteps();renderEditor();}
+function moveStep(i,delta){const j=i+delta;if(j<0||j>=project.steps.length)return;[project.steps[i],project.steps[j]]=[project.steps[j],project.steps[i]];renderSteps();renderEditor();dirty();}
+function removeStep(id){const pos=project.steps.findIndex(s=>s.id===id);if(pos<0||!confirm('Remove this tutorial step and its annotations?'))return;project.steps.splice(pos,1);undoStacks.delete(id);redoStacks.delete(id);if(id===selectedId)selectedId=project.steps[Math.min(pos,project.steps.length-1)]?.id||null;renderSteps();renderEditor();dirty();}
+function renderPageFields(){$('guideTitle').value=project.title;$('guideSubtitle').value=project.subtitle;}
+function refreshAll(){renderPageFields();renderSteps();renderEditor();}
+async function refreshCanvas(){const step=selected();if(!step)return;const serial=++renderSerial;try{
+   const img=await loadImage(step.src);if(serial!==renderSerial||!selected()||step.id!==selectedId)return;
+   $('imageDimensions').textContent=`${img.naturalWidth} × ${img.naturalHeight} px`;
+   await renderToCanvas(step,canvas,draft);
+ }catch(e){say(e.message,true);}}
+function coordinates(event){const rect=canvas.getBoundingClientRect();return{x:clamp((event.clientX-rect.left)/rect.width),y:clamp((event.clientY-rect.top)/rect.height)};}
+function annotationFromPointer(start,end){const type=tool;const s=selected();let label=1;if(type==='number')label=s.annotations.filter(a=>a.type==='number').reduce((m,a)=>Math.max(m,a.label),0)+1;
+  return {type,x:start.x,y:start.y,x2:end.x,y2:end.y,color:$('annotationColor').value,size:Number($('annotationSize').value),label};
+}
+let pointer=null;
+canvas.addEventListener('pointerdown',e=>{if(!selected()||e.button>0)return;const p=coordinates(e);pointer={id:e.pointerId,start:p};try{canvas.setPointerCapture(e.pointerId);}catch{}if(tool!=='number'){draft=annotationFromPointer(p,p);refreshCanvas();}e.preventDefault();});
+canvas.addEventListener('pointermove',e=>{if(!pointer||pointer.id!==e.pointerId||tool==='number')return;draft=annotationFromPointer(pointer.start,coordinates(e));refreshCanvas();e.preventDefault();});
+canvas.addEventListener('pointerup',e=>{if(!pointer||pointer.id!==e.pointerId||!selected())return;const end=coordinates(e),p=pointer;pointer=null;try{canvas.releasePointerCapture(e.pointerId);}catch{};
+  if(tool!=='number'&&Math.hypot(end.x-p.start.x,end.y-p.start.y)<.009){draft=null;refreshCanvas();return;}
+  checkpoint();selected().annotations.push(annotationFromPointer(p.start,end));draft=null;refreshCanvas();refreshHistory();renderSteps();dirty();e.preventDefault();});
+canvas.addEventListener('pointercancel',()=>{pointer=null;draft=null;refreshCanvas();});
+for(const b of document.querySelectorAll('[data-tool]'))b.addEventListener('click',()=>{tool=b.dataset.tool;for(const el of document.querySelectorAll('[data-tool]')){el.classList.toggle('active',el===b);el.setAttribute('aria-pressed',String(el===b));}$('canvasHint').textContent=labelForTool();});
+$('undo').addEventListener('click',()=>historyUndo(false));$('redo').addEventListener('click',()=>historyUndo(true));
+$('clearAnnotations').addEventListener('click',()=>{if(!selected()||!selected().annotations.length)return;checkpoint();selected().annotations=[];refreshCanvas();renderSteps();refreshHistory();dirty();});
+$('previousStep').addEventListener('click',()=>{if(index()>0)selectStep(project.steps[index()-1].id);});
+$('nextStep').addEventListener('click',()=>{if(index()<project.steps.length-1)selectStep(project.steps[index()+1].id);});
+$('stepTitle').addEventListener('input',textChange);$('stepDescription').addEventListener('input',textChange);
+$('guideTitle').addEventListener('input',()=>{project.title=$('guideTitle').value;dirty();});
+$('guideSubtitle').addEventListener('input',()=>{project.subtitle=$('guideSubtitle').value;dirty();});
+for(const id of ['addImagesIcon','addImages','uploadFirst'])$(id).addEventListener('click',()=>imageInput.click());
+for(const id of ['importBackup','restoreProject'])$(id).addEventListener('click',()=>projectInput.click());
+function imageFromFile(file){return new Promise((resolve,reject)=>{const url=URL.createObjectURL(file);const image=new Image();image.onload=()=>{URL.revokeObjectURL(url);resolve(image);};image.onerror=()=>{URL.revokeObjectURL(url);reject(new Error(`Could not read ${file.name}.`));};image.src=url;});}
+async function compressForProject(file){const image=await imageFromFile(file);const scale=Math.min(1,2200/Math.max(image.naturalWidth,image.naturalHeight)),w=Math.max(1,Math.round(image.naturalWidth*scale)),h=Math.max(1,Math.round(image.naturalHeight*scale));
+  const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d');ctx.drawImage(image,0,0,w,h);
+  const type=file.type==='image/jpeg'?'image/jpeg':'image/png';return c.toDataURL(type,type==='image/jpeg'?.9:undefined);
+}
+imageInput.addEventListener('change',async()=>{
+ const files=[...imageInput.files];imageInput.value='';if(!files.length)return;
+ const accepted=files.filter(f=>['image/png','image/jpeg','image/webp'].includes(f.type)&&f.size<=15*1024*1024).slice(0,Math.max(0,60-project.steps.length));
+ if(accepted.length!==files.length)say('Some images were skipped (unsupported, too large, or maximum 60 steps).',true);
+ if(!accepted.length)return;
+ setBusy(true);updateSaveStatus('Importing screenshots…');let firstId=null;let success=0;
+ for(const f of accepted){try{const src=await compressForProject(f);const title=f.name.replace(/\.[^/.]+$/,'').replace(/[_-]+/g,' ').trim().slice(0,120)||`Step ${project.steps.length+1}`;const step={id:uid(),title,description:'',src,annotations:[]};project.steps.push(step);firstId??=step.id;success++;}catch(e){say(e.message,true);}}
+ if(firstId)selectedId=firstId;refreshAll();if(success){dirty();say(`${success} screenshot${success===1?'':'s'} added.`);}setBusy(false);
+});
+$('newProject').addEventListener('click',async()=>{if(project.steps.length&&!confirm('Start a new project? Export a backup first to avoid losing these steps.'))return;clearTimeout(saveTimer);project=createEmptyProject();selectedId=null;undoStacks.clear();redoStacks.clear();try{await clearDraft();}catch(e){console.warn(e);}refreshAll();updateSaveStatus('New project');say('New project started.');});
+$('downloadProject').addEventListener('click',()=>{downloadText(JSON.stringify({...project,exportedAt:new Date().toISOString()},null,2),`${guideBaseFilename(project)}.openstep.json`,'application/json');say('Project backup downloaded.');});
+projectInput.addEventListener('change',async()=>{const file=projectInput.files?.[0];projectInput.value='';if(!file)return;if(file.size>100_000_000){say('Backup is too large.',true);return;}try{const raw=JSON.parse(await file.text());const next=normalizeProject(raw);if(project.steps.length&&!confirm('Restore this backup? It will replace your current project.'))return;project=next;selectedId=project.steps[0]?.id||null;undoStacks.clear();redoStacks.clear();refreshAll();dirty();say('Project restored.');}catch(e){say(e.message||'Invalid backup file.',true);}});
+async function withGuide(fn){if(busy)return;if(!project.steps.length){say('Add at least one screenshot first.',true);return;}setBusy(true);try{const markup=await createGuideMarkup(project);await fn(markup);}catch(e){say(e.message||'Export failed.',true);console.error(e);}finally{setBusy(false);}}
+async function preview(){await withGuide(async html=>{$('guidePreviewBody').innerHTML=html;$('guideDialog').showModal();});}
+$('previewGuide').addEventListener('click',preview);$('closePreview').addEventListener('click',()=>$('guideDialog').close());
+$('guideDialog').addEventListener('click',e=>{if(e.target===$('guideDialog'))$('guideDialog').close();});
+$('exportHtml').addEventListener('click',()=>withGuide(async markup=>{downloadText(fullGuideHtml(markup,project.title),`${guideBaseFilename(project)}.html`,'text/html');say('Standalone HTML guide downloaded.');}));
+$('exportPng').addEventListener('click',async()=>{if(!selected()){say('Choose a screenshot first.',true);return;}setBusy(true);try{const step=selected();const url=await annotatedPng(step);downloadDataUrl(url,`${guideBaseFilename({title:step.title})}.png`);say('Annotated PNG downloaded.');}catch(e){say(e.message,true);}finally{setBusy(false);}});
+function exportPdf(){if(!project.steps.length){say('Add at least one screenshot first.',true);return;}if(busy)return;
+  // Open synchronously so mobile popup blockers do not interrupt the export after rendering.
+  const popup=window.open('','_blank');if(!popup){say('Your browser blocked the print window. Allow popups or download HTML instead.',true);return;}
+  popup.document.write('<!doctype html><title>Preparing your guide…</title><p style="font:16px system-ui;padding:32px">Preparing your print-ready tutorial…</p>');popup.document.close();
+  withGuide(async markup=>{const html=fullGuideHtml(markup,project.title,true);popup.document.open();popup.document.write(html);popup.document.close();say('Choose “Save as PDF” in the print dialog.');}).catch(()=>{try{popup.close();}catch{}});
+}
+for(const id of ['exportPdf','exportPdfTop','previewPdf'])$(id).addEventListener('click',exportPdf);
+document.addEventListener('keydown',e=>{if(!(e.ctrlKey||e.metaKey)||!['z','y'].includes(e.key.toLowerCase()))return;if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;e.preventDefault();historyUndo(e.key.toLowerCase()==='y'||e.shiftKey);});
+
+async function start(){try{const cached=await loadDraft();if(cached){project=normalizeProject(cached);selectedId=project.steps[0]?.id||null;updateSaveStatus('✓ Restored from this device');}else updateSaveStatus('Ready to start');}catch(e){updateSaveStatus('Local save unavailable');console.warn(e);}refreshAll();}
+start();
+</script>
+</body>
+</html>
